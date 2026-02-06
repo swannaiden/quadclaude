@@ -23,8 +23,8 @@ Each window lights up based on what Claude is doing:
 Context window usage, 5-hour, and 7-day API quota bars with projected usage indicators:
 ```
 Ctx ████████████░░░░░░░░  60%   5h ███▓▓▓░░░░░░░░░░░░░░  17%(~43%)   7d █▓▓▓▓▓▓▓▓▓░░░░░░░░░░   6%(~52%)
-     ^^^^^^^^^^^^                    ^^^                                  ^^^^^^^^^^^
-     current usage                   projected                            projected
+    ^^^^^^^^^^^^                      ^^^                                ^^^^^^^^^
+    current usage                     projected                          projected
 ```
 
 ### Grid Mode
@@ -58,7 +58,7 @@ Background polling of the Anthropic API for quota data. Authenticates via your e
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/quadclaude.git
+git clone https://github.com/swannaiden/quadclaude.git
 cd quadclaude
 ./install.sh /path/to/your/project
 ```
