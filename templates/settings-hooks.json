@@ -20,6 +20,16 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/scripts/set-claude-status.sh thinking"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
