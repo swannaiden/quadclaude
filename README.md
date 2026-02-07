@@ -30,7 +30,7 @@ Ctx ████████████░░░░░░░░  60%   5h █�
 ### Grid Mode
 Toggle between tabbed windows and a tiled pane layout with **`Ctrl+b g`**. Pane borders show each session's current task.
 
-![Grid mode](images/grid-mode.png)
+![Grid mode](images/gird-mode.png)
 
 ### Auto-Updating Titles
 Window names update automatically from in-progress task descriptions. See what each Claude is working on at a glance -- no manual updates needed.
