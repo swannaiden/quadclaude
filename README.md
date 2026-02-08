@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/logo.png" alt="QuadClaude Logo" width="200">
+  <img src="images/logo.png" alt="QuadClaude Logo" width="500">
 </p>
 
 # 🖥️ QuadClaude
