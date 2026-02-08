@@ -31,6 +31,12 @@ SEVEN_D=$(printf "%.0f" "$SEVEN_D" 2>/dev/null || echo "0")
 
 # Project usage to end of window based on current rate
 # projected = utilization * (window_seconds / elapsed_seconds)
+parse_iso_date() {
+  # Try GNU date first, then macOS-compatible python3
+  date -d "$1" +%s 2>/dev/null && return
+  python3 -c "from datetime import datetime; print(int(datetime.fromisoformat('$1').timestamp()))" 2>/dev/null
+}
+
 project_usage() {
   local util=$1
   local reset_at=$2
@@ -40,7 +46,7 @@ project_usage() {
     return
   fi
   local now=$(date +%s)
-  local reset_epoch=$(date -d "$reset_at" +%s 2>/dev/null)
+  local reset_epoch=$(parse_iso_date "$reset_at")
   if [ -z "$reset_epoch" ]; then
     echo "0"
     return

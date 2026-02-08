@@ -6,7 +6,8 @@
 # Authentication priority:
 #   1. CLAUDE_OAUTH_TOKEN env var
 #   2. .env file next to this script
-#   3. ~/.claude/.credentials.json
+#   3. macOS Keychain (Claude Code-credentials)
+#   4. ~/.claude/.credentials.json
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/../config.sh" 2>/dev/null
@@ -29,7 +30,19 @@ get_token() {
     fi
   fi
 
-  # 3. Try credentials file (Linux)
+  # 3. Try macOS Keychain
+  if command -v security &>/dev/null; then
+    local CREDS=$(security find-generic-password -s "Claude Code-credentials" -w 2>/dev/null)
+    if [ -n "$CREDS" ]; then
+      local TOKEN=$(echo "$CREDS" | jq -r '.claudeAiOauth.accessToken // empty' 2>/dev/null)
+      if [ -n "$TOKEN" ]; then
+        echo "$TOKEN"
+        return
+      fi
+    fi
+  fi
+
+  # 4. Try credentials file (Linux)
   local CREDS_FILE="$HOME/.claude/.credentials.json"
   if [ -f "$CREDS_FILE" ]; then
     local TOKEN=$(jq -r '.claudeAiOauth.accessToken // empty' "$CREDS_FILE" 2>/dev/null)
