@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/logo.png" alt="QuadClaude Logo" width="200">
+</p>
+
 # 🖥️ QuadClaude
 
 > Run four Claude Code sessions in one tmux workspace with live status monitoring
